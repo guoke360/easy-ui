@@ -1,0 +1,200 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <link rel="stylesheet" href="easy-ui/themes/icon.css">
+    <link rel="stylesheet" href="easy-ui/themes/default/easyui.css">
+    <script src="easy-ui/jquery.min.js"></script>
+    <script src="easy-ui/jquery.easyui.min.js"></script>
+    <script src="easy-ui/knockout-3.4.0.js"></script>
+</head>
+<body class="easyui-layout">
+<div data-options="region:'center'">
+    <div class="easyui-layout" data-options="fit:true">
+        <div data-options="region:'north'"
+             style=" display: flex;height:100px;background-image:url(image/65232354_p0.jpg);
+             align-items:flex-end;font-size: 24px;color:white" >在线集成平台脚本管理</div>
+        <div id="aa" data-options="region:'west'" class="easyui-accordion" style="width:300px">
+            <div title="Title1" data-options="iconCls:'icon-html',title:'脚本管理'"  style="overflow:auto;padding:10px;">
+                <a id="mb" class="easyui-menubutton"
+                   data-options="menu:'#ss',iconCls:'icon-add'">ADD</a>
+                <div id="ss" style="width:80px;">
+                    <div onclick="append()" data-options="iconCls:'icon-html'">HTML</div>
+                    <div onclick="append()" data-options="iconCls:'icon-javascript'">JavaScript</div>
+                    <div onclick="append()" data-options="iconCls:'icon-api'">API</div>
+                </div>
+                    <ul id="tt" class="easyui-tree" data-options="
+                 ">
+                        <li>
+                            <span>财务管理</span>
+                            <ul>
+                                <li data-options="state:'closed'">
+                                    <span>HTML</span>
+                                    <ul>
+                                        <li onclick="addTab('baidu','http://www.baidu.com')">about.html</li>
+                                        <li onclick="addTab('baidu','http://www.baidu.com')">welcome.html</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span>JavaScript</span>
+                                    <ul>
+                                        <li>Intel</li>
+                                        <li>Java</li>
+                                        <li>Microsoft Office</li>
+                                        <li>Games</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span>JavaScript</span>
+                                    <ul>
+                                        <li>Intel</li>
+                                        <li>Java</li>
+                                        <li>Microsoft Office</li>
+                                        <li>Games</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                <div id="mm" class="easyui-menu" style="width:120px;">
+                    <div onclick="append()" data-options="iconCls:'icon-add'">Append</div>
+                    <div onclick="removeit()" data-options="iconCls:'icon-remove'">Remove</div>
+                    <div onclick="expand()" data-options="iconCls:'icon-mini-edit'">EDIT</div>
+                </div>
+            </div>
+        </div>
+        <div id="xx" data-options="region:'center'" class="easyui-tabs">
+            <div title="欢迎回来" style=" display: flex;padding:20px;display:none; background-image: url(image/50960701_p0.jpg)">
+               <div style="display: flex; align-items:center;">WELCMOME BACK</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<div id="win" class="easyui-dialog" closed="true" title="添加HTML"
+     style="display: flex; width:350px;height:400px;background-color: #e6e6e6; justify-content:center;"
+     data-options="iconCls:'icon-save',modal:true,
+     buttons:[
+     {text:'添加',
+     iconCls:'icon-ok',
+     handler:function(){
+     $('#win').window('close');
+     }},
+     {text:'取消',
+     iconCls:'icon-no',
+     handler:function(){
+     $('#win').window('close');
+     }}]
+     ">
+    <div>
+        <div style="font-size: 18px;">
+            选择文件所在位置:
+        </div>
+        <br>
+        <div  style="background-color: white;border: 1px;border:1px solid #000">
+            <ul id="tree2" class="easyui-tree" style="" data-options="
+                    method: 'get',
+                    onDblClick: function(data){
+                    document.getElementById('father').value=data.text;
+                    },
+                    animate: true,
+                    onContextMenu: function(e,node){
+                    e.preventDefault();
+                    $(this).tree('select',node.target);
+                    $('#mm').menu('show',{
+						left: e.pageX,
+						top: e.pageY
+						});}">
+            <li>
+                <span>财务管理</span>
+                <ul>
+                    <li data-options="state:'closed'">
+                        <span>HTML</span>
+                        <ul>
+                            <li onclick="addTab('baidu','http://www.baidu.com')">about.html</li>
+                            <li onclick="addTab('baidu','http://www.baidu.com')">welcome.html</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span>JavaScript</span>
+                        <ul>
+                            <li>Intel</li>
+                            <li>Java</li>
+                            <li>Microsoft Office</li>
+                            <li>Games</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span>API</span>
+                        <ul>
+                            <li>Intel</li>
+                            <li>Java</li>
+                            <li>Microsoft Office</li>
+                            <li>Games</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        </div>
+        <div>
+            <table>
+                <tr>
+                    <td width="100">所属位置:</td><td><input id="father" name="father" type="text" readonly="true" ></td>
+                </tr>
+                <tr>
+                    <td>名称:</td><td><input id="pwd" name="pwd" type="text" class="easyui-validatebox" data-options="required:true"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#tt').tree({
+        onDblClick: function(data){
+            if($('#tt').tree('isLeaf',data.target)){//判断是否是叶子节点
+
+            var content = '<iframe scrolling="auto" frameborder="0"  src="'+'http://www.baidu.com'+'" style="width:100%;height:100%;"></iframe>';
+            $('#xx').tabs('add',{
+                title:data.text,
+                content:content,
+                closable:true
+            });
+            }
+        },
+        method: 'get',
+        animate: true,
+        onContextMenu: function(e,node){
+            e.preventDefault();
+            $(this).tree('select',node.target);
+            $('#mm').menu('show',{
+                left: e.pageX,
+                top: e.pageY
+            });}
+    });
+    $('#win').window('close'); // close a window
+    function append(){
+        $('#win').window('open'); // open a window
+    }
+    function removeit(){
+        var node = $('#tt').tree('getSelected');
+        $('#tt').tree('remove', node.target);
+    }
+    function edit(){
+        var node = $('#tt').tree('getSelected');
+        $('#tt').tree('expand',node.target);
+    }
+    function addTab(title, url){
+        if ($('#xx').tabs('exists', title)){
+            $('#xx').tabs('select', title);
+        } else {
+            var content = '<iframe scrolling="auto" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';
+            $('#xx').tabs('add',{
+                title:title,
+                content:content,
+                closable:true
+            });
+        }
+    }
+</script>
+</html>
