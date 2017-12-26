@@ -6,13 +6,14 @@
     <script src="easy-ui/jquery.min.js"></script>
     <script src="easy-ui/jquery.easyui.min.js"></script>
     <script src="easy-ui/knockout-3.4.0.js"></script>
+    <script src="index.js" type="text/javascript"></script>
 </head>
 <body class="easyui-layout">
 <div data-options="region:'center'">
     <div class="easyui-layout" data-options="fit:true">
         <div data-options="region:'north'"
              style=" display: flex;height:100px;background-image:url(image/65232354_p0.jpg);
-             align-items:flex-end;font-size: 24px;color:white" >在线集成平台脚本管理</div>
+             align-items:flex-end;font-size: 24px;color:white" onclick="asd()" >在线集成平台脚本管理</div>
         <div id="aa" data-options="region:'west'" class="easyui-accordion" style="width:300px">
             <div title="Title1" data-options="iconCls:'icon-html',title:'脚本管理'"  style="overflow:auto;padding:10px;">
                 <a id="mb" class="easyui-menubutton"
@@ -148,18 +149,17 @@
         </div>
     </div>
 </div>
-
+</html>
 <script>
     $('#tt').tree({
         onDblClick: function(data){
             if($('#tt').tree('isLeaf',data.target)){//判断是否是叶子节点
-
-            var content = '<iframe scrolling="auto" frameborder="0"  src="'+'http://www.baidu.com'+'" style="width:100%;height:100%;"></iframe>';
-            $('#xx').tabs('add',{
-                title:data.text,
-                content:content,
-                closable:true
-            });
+                var content = '<iframe scrolling="auto" frameborder="0"  src="'+'http://www.baidu.com'+'" style="width:100%;height:100%;"></iframe>';
+                $('#xx').tabs('add',{
+                    title:data.text,
+                    content:content,
+                    closable:true
+                });
             }
         },
         method: 'get',
@@ -172,29 +172,4 @@
                 top: e.pageY
             });}
     });
-    $('#win').window('close'); // close a window
-    function append(){
-        $('#win').window('open'); // open a window
-    }
-    function removeit(){
-        var node = $('#tt').tree('getSelected');
-        $('#tt').tree('remove', node.target);
-    }
-    function edit(){
-        var node = $('#tt').tree('getSelected');
-        $('#tt').tree('expand',node.target);
-    }
-    function addTab(title, url){
-        if ($('#xx').tabs('exists', title)){
-            $('#xx').tabs('select', title);
-        } else {
-            var content = '<iframe scrolling="auto" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';
-            $('#xx').tabs('add',{
-                title:title,
-                content:content,
-                closable:true
-            });
-        }
-    }
 </script>
-</html>
