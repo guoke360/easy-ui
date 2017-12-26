@@ -1,0 +1,93 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<link rel="stylesheet" href="easy-ui/themes/icon.css">
+<link rel="stylesheet" href="easy-ui/themes/default/easyui.css">
+<script src="easy-ui/jquery.min.js"></script>
+<script src="easy-ui/jquery.easyui.min.js"></script>
+<script src="easy-ui/knockout-3.4.0.js"></script>
+<link rel="stylesheet" href="flex.css">
+    <script src="index.js"></script>
+</head>
+<body>
+<div>
+    <div style="font-size: 18px;">
+        选择文件所在位置:
+    </div>
+    <br>
+    <div  style="background-color: white;border: 1px;border:1px solid #000">
+        <div class="easyui-panel" style="padding:5px;height: 200px;">
+            <ul id="tree2" class="easyui-tree" style="" data-options="
+                    method: 'get',
+                    onDblClick: function(data){
+                    document.getElementById('father').value=data.text;
+                    },
+                    animate: true,
+                    onContextMenu: function(e,node){
+                    e.preventDefault();
+                    $(this).tree('select',node.target);
+                    $('#mm').menu('show',{
+						left: e.pageX,
+						top: e.pageY
+						});}">
+                <li>
+                    <span>财务管理</span>
+                    <ul>
+                        <li data-options="state:'closed'">
+                            <span>HTML</span>
+                            <ul>
+                                <li onclick="addTab('baidu','http://www.baidu.com')">about.html</li>
+                                <li onclick="addTab('baidu','http://www.baidu.com')">welcome.html</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span>JavaScript</span>
+                            <ul>
+                                <li>Intel</li>
+                                <li>Java</li>
+                                <li>Microsoft Office</li>
+                                <li>Games</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span>API</span>
+                            <ul>
+                                <li>Intel</li>
+                                <li>Java</li>
+                                <li>Microsoft Office</li>
+                                <li>Games</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        <!--<table>-->
+        <!--<tr>-->
+        <!--<td width="100" height="50">所属位置:</td><td><input id="father" name="father" type="text" readonly="true" ></td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+        <!--<td>名称:</td><td><input id="pwd" name="pwd" type="text" class="easyui-validatebox" data-options="required:true"></td>-->
+        <!--</tr>-->
+        <!--</table>-->
+    </div>
+    <div class="grid">
+        <div class="grid-cell">
+            <div class="demo">所属位置:</div>
+        </div>
+        <div class="grid-cell">
+            <div class="demo"><input id="father" name="father" type="text" readonly="true" ></div>
+        </div>
+        <div class="grid-cell">
+            <div class="demo">名称:</div>
+        </div>
+        <div class="grid-cell">
+            <div class="demo"><input id="pwd" name="pwd" type="text" class="easyui-validatebox" data-options="required:true"></div>
+        </div>
+    </div>
+</div>
+<button value="OK" onclick="OKS()"></button>
+</body>
+</html>

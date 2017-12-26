@@ -1,7 +1,4 @@
 
-function append(){
-    $('#win').window('open'); // open a window
-}
 function removeit(){
     var node = $('#tt').tree('getSelected');
     $('#tt').tree('remove', node.target);
@@ -22,7 +19,10 @@ function addTab(title, url){
         });
     }
 }
-
 function asd() {
     alert('xxxx');
+}
+function OKS() {
+    console.log()
+    alert(document.getElementById('pwd').value)
 }
