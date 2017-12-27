@@ -1,13 +1,14 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<link rel="stylesheet" href="easy-ui/themes/icon.css">
-<link rel="stylesheet" href="easy-ui/themes/default/easyui.css">
-<script src="easy-ui/jquery.min.js"></script>
-<script src="easy-ui/jquery.easyui.min.js"></script>
-<script src="easy-ui/knockout-3.4.0.js"></script>
-<link rel="stylesheet" href="flex.css">
+    <link rel="stylesheet" href="easy-ui/themes/icon.css">
+    <script src="easy-ui/flexie.js"></script>
+    <script src="easy-ui/jquery-1.10.2.js"></script>
+    <script src="easy-ui/jquery.easyui.min.js"></script>
+    <script src="easy-ui/knockout-3.4.0.js"></script>
     <script src="index.js"></script>
+    <link rel="stylesheet" href="easy-ui/themes/bootstrap/easyui.css">
+    <link rel="stylesheet" href="table.css">
 </head>
 <body>
 <div>
@@ -64,30 +65,44 @@
         </div>
     </div>
     <div>
-        <!--<table>-->
-        <!--<tr>-->
-        <!--<td width="100" height="50">所属位置:</td><td><input id="father" name="father" type="text" readonly="true" ></td>-->
-        <!--</tr>-->
-        <!--<tr>-->
-        <!--<td>名称:</td><td><input id="pwd" name="pwd" type="text" class="easyui-validatebox" data-options="required:true"></td>-->
-        <!--</tr>-->
-        <!--</table>-->
     </div>
-    <div class="grid">
-        <div class="grid-cell">
-            <div class="demo">所属位置:</div>
-        </div>
-        <div class="grid-cell">
-            <div class="demo"><input id="father" name="father" type="text" readonly="true" ></div>
-        </div>
-        <div class="grid-cell">
-            <div class="demo">名称:</div>
-        </div>
-        <div class="grid-cell">
-            <div class="demo"><input id="pwd" name="pwd" type="text" class="easyui-validatebox" data-options="required:true"></div>
-        </div>
+    <table style="width: 100%" >
+        <tr>
+            <td class="td-right" >
+                所属位置:
+            </td>
+            <td class="td-right">
+                <input data-options="prompt:'选择上方的文件夹'" readonly="true" class="easyui-textbox"   style="width: 100%" type="text" required>
+            </td>
+        </tr>
+        <tr>
+            <td class="td-right">
+                名称：
+            </td>
+            <td class="td-right">
+                <input  id="pwd"  data-options="prompt:'输入名称'"   style="width: 100%" name="pwd" type="text" class="easyui-textbox">
+            </td>
+        </tr>
+
+    </table>
+    <!--<div class="layui-row">-->
+        <!--<div class="col-md-2" >-->
+            <!--所属位置:-->
+        <!--</div>-->
+        <!--<div class="col-md-10">-->
+            <!--<input class="form-control" type="text" required>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="layui-row">-->
+        <!--<div>-->
+            <!--<div style="width: 100px"  >-->
+                <!--名称：-->
+            <!--</div>-->
+            <!--<div class="col-md-10">-->
+                <!--<input  id="pwd"  data-options="prompt:'输入名称'"   style="width: 100%" name="pwd" type="text" class="easyui-textbox">-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
     </div>
-</div>
-<button value="OK" onclick="OKS()"></button>
 </body>
 </html>
